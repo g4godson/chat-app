@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Index</title>
+</head>
+<body>
+    <div>
+            <form action="/register" method = 'post'>
+                {%csrf_token%}
+
+                <label for="name">Name : </label>
+                <input type="text" name = "name" id = "name">
+                <br>
+
+                <label for="email">Email :</label>
+                <input type="email" name = "email">
+                <br>
+
+                <label for="password">Password :</label>
+                <input type="password" name = "password">
+                <br>
+
+                <input type="submit" value = "Register">
+                <br><br>
+            </form>
+    </div>
+
+    <div>
+            <form action = "/login" method = "post">
+                {%csrf_token%}
+                <br>
+                <label for="email">Email :</label>
+                <input type="email" name = "email">
+                <br>
+                <label for="password">Password :</label>
+                <input type="password" name = "password">
+                <br>
+                <input type="submit" value = "Log In">
+                <br>
+            </form>
+
+    </div>
+</body>
+</html>

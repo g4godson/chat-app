@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .top{
+            width:900px;
+            height: 70px;
+
+        }
+        h2{
+            color:blue;
+            font-size: 30px;
+            display : inline-block;
+        }
+        a{
+            display: inline-block;
+            margin-left: 500px;
+        }
+        .area{
+            border : 1px solid black;
+            width : 700px;
+            min-height: 300px;
+            margin-top: 50px;
+            padding:30px;
+
+        }
+        .chat_2{
+            width : 600px;
+            height: 40px;
+            border:1px black solid;
+            margin-bottom: 5px;
+            font-size: 20px;
+            text-align: right;
+            color:green;
+
+        }
+
+        .chat_1{
+            width : 600px;
+            height: 40px;
+            border:1px black solid;
+            text-align: left;
+            font-size: 20px;
+
+        }
+
+    </style>
+</head>
+<body>
+    <div class ="top">
+        <h2>{{receiver.name}}</h2>
+        <a href = "/reset">Log Out</a>
+    </div>
+    <div>
+            <form action ="/{{receiver.id}}/post" method = "post">
+                {%csrf_token%}
+                <div>
+
+                    <textarea name="content" id="content" cols="60" rows="5" placeholder = "write ..."></textarea>
+                    <input type="submit" value = "Send">
+
+                </div>
+    </div>
+    <div class = "area">
+        {%for obj in messages%}
+                {%if request.session.logged_in == obj.sender.id%}
+                    <div class = "chat_2">
+                            {{obj.content}}
+                    </div>
+                {%else%}
+                    <div class = "chat_1">
+                            {{obj.content}}
+                    </div>
+                {%endif%}
+        {%endfor%}
+    </div>
+</form>
+
+
+</body>
+</html>
